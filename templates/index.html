@@ -2,58 +2,146 @@
 <html>
 <head>
     <title>Boston Housing Price Prediction</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+       body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #141E30, #243B55);
+            color: #ffffff;
+            text-align: center;
+            padding: 40px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+        }
+        form {
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(12px);
+            width: 400px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            animation: slideUp 1s ease-in-out;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #FFD700;
+            text-align: left;
+            display: block;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 6px;
+            background: linear-gradient(to right, #283048, #859398);
+            color: #ffffff;
+            transition: border-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+            box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        input[type="text"]:focus {
+            border-color: #FFD700;
+            outline: none;
+            transform: scale(1.03);
+            background: linear-gradient(to right, #859398, #283048);
+        }
+        input[type="submit"] {
+            grid-column: span 2;
+            background: linear-gradient(to right, #FF512F, #DD2476);
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+            width: 100%;
+            margin-top: 20px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        input[type="submit"]:hover {
+            background: linear-gradient(to right, #DD2476, #FF512F);
+            transform: scale(1.07);
+        }
+        h3 {
+            color: #FFD700;
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            animation: fadeIn 1s ease-in-out;
+            text-shadow: 1px 1px 6px rgba(255, 215, 0, 0.6);
+        }
+    </style>
 </head>
 <body>
     <h2>Boston Housing Price Prediction</h2>
     <form action="/predict" method="post">
+        <label>CRIM:</label>
+        <input type="text" name="CRIM">
+        
+        <label>ZN:</label>
+        <input type="text" name="ZN">
+        
+        <label>INDUS:</label>
+        <input type="text" name="INDUS">
+        
+        <label>CHAS:</label>
+        <input type="text" name="CHAS">
+        
+        <label>NOX:</label>
+        <input type="text" name="NOX">
+        
+        <label>RM:</label>
+        <input type="text" name="RM">
+        
+        <label>AGE:</label>
+        <input type="text" name="AGE">
+        
+        <label>DIS:</label>
+        <input type="text" name="DIS">
+        
+        <label>RAD:</label>
+        <input type="text" name="RAD">
+        
+        <label>TAX:</label>
+        <input type="text" name="TAX">
+        
+        <label>PTRATIO:</label>
+        <input type="text" name="PTRATIO">
+        
+        <label>B:</label>
+        <input type="text" name="B">
+        
+        <label>LSTAT:</label>
+        <input type="text" name="LSTAT">
 
-        <label>CRIM:</label><br>
-        <input type="text" name="CRIM"><br>
-
-        <label>ZN:</label><br>
-        <input type="text" name="ZN"><br>
-
-        <label>INDUS:</label><br>
-        <input type="text" name="INDUS"><br>
-
-        <label>CHAS:</label><br>
-        <input type="text" name="CHAS"><br>
-
-        <label>NOX:</label><br>
-        <input type="text" name="NOX"><br>
-
-        <label>RM:</label><br>
-        <input type="text" name="RM"><br>
-
-        <label>AGE:</label><br>
-        <input type="text" name="AGE"><br>
-
-        <label>DIS:</label><br>
-        <input type="text" name="DIS"><br>
-
-        <label>RAD:</label><br>
-        <input type="text" name="RAD"><br>
-
-        <label>TAX:</label><br>
-        <input type="text" name="TAX"><br>
-
-        <label>PTRATIO:</label><br>
-        <input type="text" name="PTRATIO"><br>
-
-        <label>B:</label><br>
-        <input type="text" name="B"><br>
-
-        <label>LSTAT:</label><br>
-        <input type="text" name="LSTAT"><br>
-
-        <br>
         <input type="submit" value="Predict">
-
     </form>
 
     {% if prediction_text %}
         <h3>{{ prediction_text }}</h3>
     {% endif %}
-
 </body>
 </html>
